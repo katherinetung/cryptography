@@ -135,17 +135,7 @@ def decrypt_mhkc(ciphertext, private_key):
     return decrypt_msg
 
 
-
-
-
-
 def main():
-    pk=generate_private_key()
-    pub_k=create_public_key(pk)
-    en=encrypt_mhkc('ABCDEFGHIJKLMNOPQRSTUVWXYZ',pub_k)
-    print(en)
-    de=decrypt_mhkc(en,pk)
-    print(de)
 
 
 
