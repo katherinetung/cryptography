@@ -57,11 +57,10 @@ def decrypt_vigenere(ciphertext, keyword):
 # Returns: tuple (W, Q, R) - W a length-n tuple of integers, Q and R both integers
 def generate_private_key(n=8):
     #Part 1: Generating W
-    si_sequence=[1]
+    si_sequence=[2]
     for counter in range(n-1):
-        #Given that Python has a max int, ensure that the sequence is buildable
         s_sum=sum(si_sequence)
-        new_el=random.randint(s_sum,math.floor(BIG_NUM/2**(n-counter)))
+        new_el=random.randint(s_sum+1,2*s_sum)
         si_sequence.append(new_el)
     w=tuple(si_sequence)
     #Part 2: Choosing Q
@@ -136,10 +135,7 @@ def decrypt_mhkc(ciphertext, private_key):
 
 
 def main():
-
-
-
-
+    
 
 if __name__ == "__main__":
     main()
