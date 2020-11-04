@@ -134,8 +134,5 @@ def decrypt_mhkc(ciphertext, private_key):
     return decrypt_msg
 
 
-def main():
-    
 
 if __name__ == "__main__":
-    main()
