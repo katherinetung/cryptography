@@ -112,6 +112,19 @@ def encrypt_mhkc(plaintext, public_key):
         c.append(small_c)
     return c
 
+# Arguments: coprime positive integers a and b
+# Returns: modular inverse of a mod b
+def mod_inverse(a,b):
+    r_0,s_0,t_0=a,1,0
+    r_1,s_1,t_1=b,0,1
+    while r_1 > 0:
+        q= r_0 // r_1
+        new_r,new_s,new_t=r_0-q*r_1,s_0-q*s_1,t_0-q*t_1
+        r_0,s_0,t_0=r_1,s_1,t_1
+        r_1,s_1,t_1=new_r,new_s,new_t
+    return s_0 % b
+
+
 # Arguments: list of integers, tuple (W,Q,R)
 # Returns: bytearray or str of plaintext
 def decrypt_mhkc(ciphertext, private_key):
@@ -119,7 +132,7 @@ def decrypt_mhkc(ciphertext, private_key):
     decrypt_msg=''
     for i in ciphertext:
         #Mod inverse
-        r_inverse=sympy.numbers.igcdex(r,q)[0]%q
+        r_inverse=mod_inverse(r,q)
         new_i=i*r_inverse%q
         #Greedy algorithm
         working_i=new_i
@@ -136,3 +149,5 @@ def decrypt_mhkc(ciphertext, private_key):
 
 
 if __name__ == "__main__":
+    print("test")
+
