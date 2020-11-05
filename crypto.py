@@ -1,6 +1,5 @@
 import random
 import math
-import sympy
 
 BIG_NUM=99999
 # Caesar Cipher
